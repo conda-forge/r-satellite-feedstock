@@ -15,7 +15,8 @@ source:
   sha256: 20fa9bda1fd063f0eaaf68dba1f86ca5fbbb9ee4251e78a5a0a6acdd34fd1fbd
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   script: R CMD INSTALL --build .
   skip: True  # [win32]
   rpaths:
@@ -24,19 +25,21 @@ build:
 
 requirements:
   build:
+    - posix  # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('cxx') }}        # [unix]
+    - {{ compiler('m2w64_cxx') }}  # [win]
+  host:
     - r-base
     - r-rcpp
     - r-plyr
     - r-raster
-    - posix  # [win]
-    - {{native}}toolchain  # [win]
-    - gcc  # [not win]
   run:
     - r-base
     - r-rcpp
     - r-plyr
     - r-raster
-    - libgcc  # [not win]
 
 test:
   commands:
