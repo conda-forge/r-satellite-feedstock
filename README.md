@@ -14,14 +14,16 @@ Summary: Herein, we provide a broad variety of functions which are useful for ha
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-satellite-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-satellite-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-satellite-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-satellite-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-satellite-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-satellite-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-satellite-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-satellite-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-satellite-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-satellite-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-satellite-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-satellite-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-satellite/badges/version.svg)](https://anaconda.org/conda-forge/r-satellite)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-satellite/badges/downloads.svg)](https://anaconda.org/conda-forge/r-satellite)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--satellite-green.svg)](https://anaconda.org/conda-forge/r-satellite) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-satellite.svg)](https://anaconda.org/conda-forge/r-satellite) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-satellite.svg)](https://anaconda.org/conda-forge/r-satellite) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-satellite.svg)](https://anaconda.org/conda-forge/r-satellite) |
 
 Installing r-satellite
 ======================
