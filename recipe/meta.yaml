@@ -1,4 +1,4 @@
-{% set version = "1.0.2" %}
+{% set version = "1.0.3" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/satellite_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz
-  sha256: 6447476bd31216e5abe504221e465677954d07419b4174ab4f4e4f7a197969c5
+  sha256: 3fae12051c4300937c31274f3f6d3c2bb8618306807192498d22a01f4189100d
 
 build:
   merge_build_host: true  # [win]
