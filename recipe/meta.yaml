@@ -1,5 +1,4 @@
-{% set version = "1.0.2" %}
-
+{% set version = "1.0.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,51 +7,58 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: satellite_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/satellite_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz
-  sha256: 6447476bd31216e5abe504221e465677954d07419b4174ab4f4e4f7a197969c5
+    - {{ cran_mirror }}/src/contrib/satellite_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz
+  sha256: 3fae12051c4300937c31274f3f6d3c2bb8618306807192498d22a01f4189100d
 
 build:
-  merge_build_host: true  # [win]
+  merge_build_host: True  # [win]
   number: 0
-  script: R CMD INSTALL --build .
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
+  script: R CMD INSTALL --build .
 
 requirements:
   build:
-    - posix  # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ posix }}filesystem        # [win]
+    - {{ posix }}make
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-rcpp
+    - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
   run:
     - r-base
-    - r-rcpp
+    - {{ native }}gcc-libs         # [win]
+    - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
 
 test:
   commands:
-    - $R -e "library('satellite')"  # [not win]
+    - $R -e "library('satellite')"           # [not win]
     - "\"%R%\" -e \"library('satellite')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=satellite
-  license: GPL (>= 3)
-  license_file: LICENSE
+  license: MIT
   summary: Herein, we provide a broad variety of functions which are useful for handling, manipulating, and visualizing satellite-based remote sensing  data. These operations range from mere data import and layer handling (eg  subsetting), over Raster* typical data wrangling (eg crop, extend), to more  sophisticated (pre-)processing
     tasks typically applied to satellite imagery  (eg atmospheric and topographic correction). This functionality is  complemented by a full access to the satellite layers' metadata at any  stage and the documentation of performed actions in a separate log file.  Currently available sensors include Landsat 4-5 (TM), 7 (ETM+),
     and 8  (OLI/TIRS Combined), and additional compatibility is ensured for the Landsat  Global Land Survey data set. Moreover, support for Terra and Aqua-MODIS as  well as PROBA-V is expected to arrive shortly.
+  license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
