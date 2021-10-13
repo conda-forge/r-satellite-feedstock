@@ -1,4 +1,4 @@
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/satellite_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz
-  sha256: 3fae12051c4300937c31274f3f6d3c2bb8618306807192498d22a01f4189100d
+  sha256: 99e79577a70489930c32da46ac26453af53e21c2d3a99f51fbf1f55f2d80dc7c
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -37,12 +37,14 @@ requirements:
     - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
+    - r-terra
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
+    - r-terra
 
 test:
   commands:
