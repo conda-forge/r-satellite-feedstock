@@ -37,12 +37,14 @@ requirements:
     - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
+    - r-terra
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.10.3
     - r-plyr
     - r-raster
+    - r-terra
 
 test:
   commands:
