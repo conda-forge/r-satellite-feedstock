@@ -18,7 +18,6 @@ build:
   rpaths:
     - lib/R/lib/
     - lib/
-  script: R CMD INSTALL --build .
 
 requirements:
   build:
