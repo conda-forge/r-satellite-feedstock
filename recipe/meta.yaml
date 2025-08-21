@@ -1,4 +1,4 @@
-{% set version = "1.0.5" %}
+{% set version = "1.0.6" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/satellite_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/satellite/satellite_{{ version }}.tar.gz
-  sha256: 3e4c382f905eb0b2d84f03423af2960854e5cf94905a373c6ba3f41a2b72a1ad
+  sha256: 4c79cd6949de0c198213151adc6c6a3d6b0b19312db235fc4d3aba82225f8cab
 
 build:
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
